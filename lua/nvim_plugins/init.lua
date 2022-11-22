@@ -15,7 +15,11 @@ vim.cmd([[
 
 local modules = {
     'nvim_plugins/colorscheme',
+    'nvim_plugins/indentguides',
+    'nvim_plugins/comments',
+    'nvim_plugins/startup',
     'nvim_plugins/terminal',
+    'nvim_plugins/bufkill',
     'nvim_plugins/dcc',
     'nvim_plugins/sneak',
     'nvim_plugins/lualine',
