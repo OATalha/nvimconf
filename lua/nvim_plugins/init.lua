@@ -8,7 +8,7 @@ local packer_bootstrap = utils.ensure_packer() -- true if packer was just instal
 vim.cmd([[ 
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost */nvim_plugins/*.lua source <afile> | PackerSync
+    autocmd BufWritePost */nvim_plugins/*.lua source $MYVIMRC | PackerSync
   augroup end
 ]])
 

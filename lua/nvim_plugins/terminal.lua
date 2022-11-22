@@ -5,7 +5,14 @@ M.install = function(use)
 end
 
 M.configure = function()
-    require("toggleterm").setup {
+
+    -- safe loading of toggle term
+    local status, toggleterm = pcall(require, "toggleterm")
+    if not status then
+        print('toggleterm could not be loaded!')
+    end
+
+    toggleterm.setup {
         -- size can be a number or function which is passed the current terminal
         size = function(term)
             if term.direction == "horizontal" then
@@ -40,22 +47,34 @@ M.configure = function()
     vim.g.toggleterm_terminal_mapping = "<leader>tt"
     vim.cmd [[
         nnoremap <silent><leader>tt <Cmd>exe v:count1 . "ToggleTerm"<CR>
-        nnoremap <silent><leader>ts <Cmd>exe v:count1 . "ToggleTerm direction=horizontal"<CR>
+        nnoremap <silent><leader>th <Cmd>exe v:count1 . "ToggleTerm direction=horizontal"<CR>
         nnoremap <silent><leader>tv <Cmd>exe v:count1 . "ToggleTerm direction=vertical"<CR>
         nnoremap <silent><leader>tb <Cmd>exe v:count1 . "ToggleTerm direction=tab"<CR>
         nnoremap <silent><leader>tf <Cmd>exe v:count1 . "ToggleTerm direction=float"<CR>
+        nnoremap <silent><leader>te <Cmd>exe "ToggleTermSendCurrentLine " . v:count1<CR>
+        vnoremap <silent><leader>te <Cmd>exe "ToggleTermSendCurrentLines " . v:count1<CR>
+        vnoremap <silent><leader>ts <Cmd>exe "ToggleTermSendVisualSelection " . v:count1<CR>
     ]]
 
     require("nvim_utils").update_which_key_maps {
         t = {
             name = "terminals",
             t = {"Toggle Terminal"},
-            s = {"Split Terminal"},
+            h = {"Split Terminal"},
             v = {"Vertical Terminal"},
             b = {"Tabbed Terminal"},
-            f = {"Floating Terminal"}
+            f = {"Floating Terminal"},
+            e = {"Execute Current Line"},
         }
     }
+
+    require("nvim_utils").update_which_key_maps ({
+        t = {
+            name = "terminals",
+            e = {"Execute Current Lines"},
+            s = {"Send Selection"},
+        }
+    }, "v")
 end
 
 return M
