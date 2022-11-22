@@ -1,6 +1,10 @@
 vim.g.python3_host_prog = '/Volumes/profiles/tahmed/Software/Python-3.9.14/bin/python3.9'
 vim.g.loaded_perl_provider = 0
 
+-- for nvim tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.opt.suffixesadd:append('.lua')
 vim.opt.path:append('lua/')
 

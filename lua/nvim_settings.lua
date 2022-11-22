@@ -2,6 +2,10 @@ vim.cmd [[filetype plugin indent on]]
 
 vim.g.mapleader = ' '
 
+-- for nvim tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- file and edit options 
 vim.o.undofile = true
 vim.o.backup = false
