@@ -14,8 +14,16 @@ vim.cmd([[
 
 
 local modules = {
+    'nvim_plugins/colorscheme',
     'nvim_plugins/terminal',
     'nvim_plugins/dcc',
+    'nvim_plugins/sneak',
+    'nvim_plugins/lualine',
+    'nvim_plugins/nerdtree',
+    'nvim_plugins/autopair',
+    'nvim_plugins/colorizer',
+    'nvim_plugins/gitsigns',
+    'nvim_plugins/which_key',
 }
 utils.remove_modules(modules)
 
