@@ -29,6 +29,8 @@ local modules = {
     'nvim_plugins/autopair',
     'nvim_plugins/colorizer',
     'nvim_plugins/gitsigns',
+    'nvim_plugins/trouble',
+    'nvim_plugins/telescope',
     'nvim_plugins/which_key',
 }
 utils.remove_modules(modules)
