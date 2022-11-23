@@ -26,11 +26,13 @@ local modules = {
     -- 'nvim_plugins/bufferline',
     'nvim_plugins/nerdtree',
     -- 'nvim_plugins/nvim_tree',
-    'nvim_plugins/autopair',
     'nvim_plugins/colorizer',
     'nvim_plugins/gitsigns',
     'nvim_plugins/trouble',
     'nvim_plugins/telescope',
+    'nvim_plugins/treesitter',
+    'nvim_plugins/autopair',
+    'nvim_plugins/autocompletions',
     'nvim_plugins/which_key',
 }
 utils.remove_modules(modules)

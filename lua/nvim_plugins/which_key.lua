@@ -16,10 +16,23 @@ M.install = function(use)
     }
 end
 
+M.register = function()
+    local status, which_key = pcall(require, "which-key")
+    if not status then
+        print("whichkey could not be loaded")
+        return
+    end
+    local utils = require("nvim_utils")
+    which_key.register(
+        utils.get_which_key_maps(), {prefix = "<leader>"})
+    which_key.register(
+        utils.get_which_key_maps("x"), {mode = "x", prefix = "<leader>"})
+end
+
 M.configure = function()
     vim.o.timeoutlen = 1000
 
-    status, which_key = pcall(require, "which-key")
+    local status, which_key = pcall(require, "which-key")
     if not status then
         print("whichkey could not be loaded")
         return
@@ -43,10 +56,8 @@ M.configure = function()
     local utils = require("nvim_utils")
     utils.update_which_key_maps(mappings)
 
-    require("which-key").register(
-        utils.get_which_key_maps(), {prefix = "<leader>"})
-    require("which-key").register(
-        utils.get_which_key_maps("x"), {mode = "x", prefix = "<leader>"})
+
+    M.register()
 end
 
 return M
