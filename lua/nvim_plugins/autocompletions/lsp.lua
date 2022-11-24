@@ -1,11 +1,10 @@
-
 local M = {}
 
-M.install = function ( use )
-    use {"neovim/nvim-lspconfig"}
-    use {"hrsh7th/cmp-nvim-lsp"} -- lsp - completer glue
-    use {"williamboman/mason.nvim"}
-    use {"williamboman/mason-lspconfig.nvim"}
+M.install = function(use)
+    use { "neovim/nvim-lspconfig" }
+    use { "hrsh7th/cmp-nvim-lsp" } -- lsp - completer glue
+    use { "williamboman/mason.nvim" }
+    use { "williamboman/mason-lspconfig.nvim" }
 end
 
 M.configure = function()
@@ -34,6 +33,7 @@ M.configure = function()
     end
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
+    ---@diagnostic disable-next-line: unused-local
     local on_attach = function(client, bufnr)
     end
 
@@ -42,12 +42,26 @@ M.configure = function()
     mason_lspconfig.setup()
 
     mason_lspconfig.setup_handlers {
-        function (server_name)
+        function(server_name)
             lspconfig[server_name].setup {
                 on_attach = on_attach,
                 capabilities = capabilities
             }
         end,
+        ['jedi_language_server'] = function()
+            lspconfig['jedi_language_server'].setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+                settings = {
+                    workspace = {
+                        extraPaths = {
+                            '/Volumes/profiles/tahmed/Repos/sapper_excludes/completion/maya/2018/py/',
+                            '/Volumes/profiles/tahmed/Repos/sapper_excludes/completion/nuke/py/'
+                        }
+                    }
+                }
+            })
+        end
     }
 
     require("nvim_plugins/autocompletions/keymaps").lsp_keymaps()
