@@ -48,20 +48,6 @@ M.configure = function()
                 capabilities = capabilities
             }
         end,
-        ['jedi_language_server'] = function()
-            lspconfig['jedi_language_server'].setup({
-                on_attach = on_attach,
-                capabilities = capabilities,
-                settings = {
-                    workspace = {
-                        extraPaths = {
-                            '/Volumes/profiles/tahmed/Repos/sapper_excludes/completion/maya/2018/py/',
-                            '/Volumes/profiles/tahmed/Repos/sapper_excludes/completion/nuke/py/'
-                        }
-                    }
-                }
-            })
-        end
     }
 
     require("nvim_plugins/autocompletions/keymaps").lsp_keymaps()
