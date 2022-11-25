@@ -50,6 +50,7 @@ M.configure = function()
             "lua",
             "vim",
             "dockerfile",
+            "toml",
         },
         -- auto install above language parsers
         auto_install = true,
