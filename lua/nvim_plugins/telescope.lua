@@ -37,9 +37,23 @@ M.configure = function()
                 },
                 n = { ["<C-t>"] = trouble.open_with_trouble },
             },
-            file_ignore_patterns = {'bleeding_rez', 'vendor', '_vendor'},
+            file_ignore_patterns = { 'bleeding_rez', 'vendor', '_vendor' },
         },
-        pickers = {},
+        pickers = {
+            find_files = {
+                follow = true
+            }
+        },
+        vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--follow",
+        },
         extensions = {},
     })
 
@@ -59,7 +73,7 @@ M.configure = function()
     map(
         "n",
         "<leader>ff",
-        ":Telescope find_files<CR>",
+        ":Telescope find_files<CR> follow=True",
         { noremap = true, silent = true, desc = "File Finder (Telescope)" }
     )
     map(

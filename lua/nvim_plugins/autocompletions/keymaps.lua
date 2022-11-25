@@ -8,7 +8,7 @@ M.lsp_keymaps = function()
         }
     }
 
-    keymap("n", "<leader>lk", "<cmd>lua vim.lsp.buf.signature_help()<cr>",
+    keymap("n", "<leader>lK", "<cmd>lua vim.lsp.buf.signature_help()<cr>",
         { noremap = true, silent = true, desc = "Signature Help" })
     keymap("n", "<leader>lw", "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>",
         { noremap = true, silent = true, desc = "Add Workspace Folder" })
@@ -41,7 +41,7 @@ M.lsp_keymaps = function()
 end
 
 M.lspsaga_keymaps = function()
-    keymap("n", "<leader>lK", "<cmd>Lspsaga hover_doc<cr>", { noremap = true, silent = true, desc = "Hover Commands" })
+    keymap("n", "<leader>lk", "<cmd>Lspsaga hover_doc<cr>", { noremap = true, silent = true, desc = "Hover Commands" })
     keymap("n", "<leader>la", "<cmd>Lspsaga code_action<cr>", { noremap = true, silent = true, desc = "Code Action" })
     keymap("n", "<leader>lR", "<cmd>Lspsaga rename<cr>", { noremap = true, silent = true, desc = "Rename" })
     keymap("n", "<leader>le", "<cmd>Lspsaga show_line_diagnostics<cr>",
