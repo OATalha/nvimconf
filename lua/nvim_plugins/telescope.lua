@@ -38,21 +38,21 @@ M.configure = function()
                 n = { ["<C-t>"] = trouble.open_with_trouble },
             },
             file_ignore_patterns = { 'bleeding_rez', 'vendor', '_vendor' },
+            vimgrep_arguments = {
+                "rg",
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--smart-case",
+                "--follow",
+            },
         },
         pickers = {
             find_files = {
                 follow = true
             }
-        },
-        vimgrep_arguments = {
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "--follow",
         },
         extensions = {},
     })

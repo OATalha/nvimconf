@@ -1,3 +1,4 @@
+local nvim_utils = require "nvim_utils"
 local M = {}
 
 M.install = function(use)
@@ -5,6 +6,7 @@ M.install = function(use)
     use { "hrsh7th/cmp-nvim-lsp" } -- lsp - completer glue
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
+    use { "simrat39/symbols-outline.nvim" }
 end
 
 M.configure = function()
@@ -53,6 +55,16 @@ M.configure = function()
     require("nvim_plugins/autocompletions/keymaps").lsp_keymaps()
     require("nvim_plugins/autocompletions/diagnostics")()
 
+    local symbols_status, symbols_outline = pcall(require, 'symbols-outline')
+    if not symbols_status then
+        return
+    end
+
+    symbols_outline.setup()
+
+    nvim_utils.keymap(
+        "n", "<leader>ly", "<cmd>SymbolsOutline<cr>",
+        { noremap = true, silent = true, desc = "SymbolsOutline" })
 end
 
 return M

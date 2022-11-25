@@ -41,6 +41,7 @@ M.lsp_keymaps = function()
 end
 
 M.lspsaga_keymaps = function()
+    keymap("n", "<leader>lF", "<cmd>Lspsaga lsp_finder<cr>", { noremap = true, silent = true, desc = "lsp_finder" })
     keymap("n", "<leader>lk", "<cmd>Lspsaga hover_doc<cr>", { noremap = true, silent = true, desc = "Hover Commands" })
     keymap("n", "<leader>la", "<cmd>Lspsaga code_action<cr>", { noremap = true, silent = true, desc = "Code Action" })
     keymap("n", "<leader>lR", "<cmd>Lspsaga rename<cr>", { noremap = true, silent = true, desc = "Rename" })
