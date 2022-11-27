@@ -23,6 +23,7 @@ local modules = {
     'nvim_plugins/dcc',
     'nvim_plugins/sneak',
     'nvim_plugins/lualine',
+    'nvim_plugins/notifications',
     -- 'nvim_plugins/bufferline',
     'nvim_plugins/nerdtree',
     -- 'nvim_plugins/nvim_tree',

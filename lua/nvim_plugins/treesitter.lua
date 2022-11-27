@@ -10,6 +10,7 @@ M.install = function(use)
     })
     use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
     use "p00f/nvim-ts-rainbow"
+    use "nvim-treesitter/nvim-treesitter-context"
 
 end
 
@@ -29,7 +30,7 @@ M.configure = function()
             enable = true,
         },
         -- enable indentation
-        indent = { enable = true },
+        -- indent = { enable = true },
         -- enable autotagging (w/ nvim-ts-autotag plugin)
         autotag = { enable = true },
         -- ensure these language parsers are installed
@@ -60,6 +61,19 @@ M.configure = function()
             set foldmethod=expr
             set foldexpr=nvim_treesitter#foldexpr()
         ]]
+
+    local context_status, context = pcall(require, "nvim-treesitter-context")
+    if not context_status then
+        return
+    end
+
+    context.setup {
+        pattern = {
+            python = {
+                'def',
+            }
+        }
+    }
 
 end
 

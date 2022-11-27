@@ -22,6 +22,7 @@ M.configure = function()
         debug = false,
         sources = {
             diagnostics.flake8,
+            diagnostics.mypy,
             formatting.black,
         },
     })
