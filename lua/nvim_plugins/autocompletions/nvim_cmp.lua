@@ -1,7 +1,7 @@
 local M = {}
 
 
-M.install = function (use)
+M.install = function(use)
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-nvim-lua"
     use "hrsh7th/cmp-path"
@@ -57,18 +57,26 @@ M.configure = function()
     require("luasnip/loaders/from_vscode").lazy_load()
     require("luasnip/loaders/from_snipmate").lazy_load()
 
-    cmp.setup({
+    local autocompletion_off = {
+        autocomplete = false,
+    }
+
+    local autocompletion_on = {
+        autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged },
+    }
+
+    local config = {
         snippet = {
             expand = function(args)
                 luasnip.lsp_expand(args.body)
             end,
         },
         mapping = cmp.mapping.preset.insert({
-            ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), {"i", "c"}),
-            ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), {"i", "c"}),
-            ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
-            ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
-            ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
+            ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+            ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+            ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+            ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+            ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
             ["<C-e>"] = cmp.mapping(
                 {
                     i = cmp.mapping.abort(),
@@ -77,7 +85,7 @@ M.configure = function()
             ),
             -- Accept currently selected item. If none selected, `select` first item.
             -- Set `select` to `false` to only confirm explicitly selected items.
-            ["<CR>"] = cmp.mapping.confirm({select = false}),
+            ["<CR>"] = cmp.mapping.confirm({ select = false }),
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
@@ -106,7 +114,7 @@ M.configure = function()
                 vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
                 -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
                 vim_item.menu =
-                    ({
+                ({
                     nvim_lsp = "[LSP]",
                     nvim_lua = "[NVIM_LUA]",
                     luasnip = "[Snippet]",
@@ -119,12 +127,27 @@ M.configure = function()
         -- sources for autocompletion
         sources = cmp.config.sources({
             { name = "nvim_lsp" }, -- lsp
-            { name = "nvim_lua"}, -- nvim lua
+            { name = "nvim_lua" }, -- nvim lua
             { name = "luasnip" }, -- snippets
             { name = "buffer" }, -- text within current buffer
             { name = "path" }, -- file system paths
         }),
-    })
+    }
+
+    cmp.setup(config)
+
+    function setAutoCmp(mode)
+        if mode then
+            config.completion = autocompletion_on
+            cmp.setup(config)
+        else
+            config.completion = autocompletion_off
+            cmp.setup(config)
+        end
+    end
+
+    vim.cmd('command! AutoCmpOn lua setAutoCmp(true)')
+    vim.cmd('command! AutoCmpOff lua setAutoCmp(false)')
 
 end
 

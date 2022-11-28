@@ -3,6 +3,7 @@ local M = {}
 local utils = require("nvim_utils")
 
 local modules = {
+    "nvim_plugins/startup/impatient",
     "nvim_plugins/startup/sessions",
     "nvim_plugins/startup/alpha",
 }
