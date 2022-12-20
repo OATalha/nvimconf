@@ -10,13 +10,5 @@ vim.opt.path:append('lua/')
 
 vim.cmd [[color habamax]]
 
-if os.getenv('PYTHONPATH') then
-    vim.cmd [[let $PYTHONPATH=$PYTHONPATH . ':/Volumes/profiles/tahmed/Repos/sapper_excludes/completion/maya/2018/py']]
-else
-    vim.cmd [[let $PYTHONPATH='/Volumes/profiles/tahmed/Repos/sapper_excludes/completion/maya/2018/py']]
-end
-
 package.loaded['nvim_init'] = nil
 require 'nvim_init'
-
-

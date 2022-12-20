@@ -27,6 +27,7 @@ local modules = {
     -- 'nvim_plugins/bufferline',
     'nvim_plugins/nerdtree',
     -- 'nvim_plugins/nvim_tree',
+    'nvim_plugins/maximizer',
     'nvim_plugins/colorizer',
     'nvim_plugins/gitsigns',
     'nvim_plugins/trouble',

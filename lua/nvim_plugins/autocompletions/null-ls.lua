@@ -23,7 +23,9 @@ M.configure = function()
         sources = {
             diagnostics.flake8,
             diagnostics.mypy,
-            formatting.black,
+            formatting.black.with({
+                extra_args = { "-l", "79" }
+            }),
         },
     })
 

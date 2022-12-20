@@ -9,7 +9,7 @@ M.install = function (use)
     use {"saadparwaiz1/cmp_luasnip"}
     use {"rafamadriz/friendly-snippets"}
     use {"honza/vim-snippets"}
-    use {'stevearc/vim-vscode-snippets'}
+    -- use {'stevearc/vim-vscode-snippets'}
     -- use {"sgouda0412/vim-snippets-1"}
 end
 
