@@ -50,6 +50,9 @@ M.configure = function()
         },
         b = {
             name = "buffers"
+        },
+        w = {
+            name = "windows"
         }
     }
 

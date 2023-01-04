@@ -1,4 +1,4 @@
-map = require("nvim_utils").keymap
+local map = require("nvim_utils").keymap
 
 -- moving from terminal
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, desc = "Exit Terminal Mode" })
@@ -27,8 +27,8 @@ map("n", "k", "gk", { noremap = true })
 map("n", "Q", "gq", { noremap = true }) -- Q for formatting
 
 -- move visual block up/down one
-map("v", "<c-j>", '"td"tp\'[V\']', {})
-map("v", "<c-k>", '"tdk"tP\'[V\']', {})
+map("v", "-", '"td"tp\'[V\']', { noremap = true } )
+map("v", "_", '"tdk"tP\'[V\']', { noremap = true })
 
 -- move a line up or down
 map("n", "-", '"tdd"tp', { noremap = true })
@@ -64,7 +64,18 @@ map(
     }
 )
 
--- nvim cmds
+-- clipboard
+map("n", "<leader>y", "\"*y", { noremap = true, desc='clipboard / yank' })
+map("v", "<leader>y", "\"*y", { noremap = true, desc='clipboard / yank' })
+map("n", "<leader>Y", "\"*Y", { noremap = true, desc='clipboard / Yank' })
+map("n", "<leader>p", "\"*p", { noremap = true, desc='clipboard / paste' })
+map("v", "<leader>p", "\"*p", { noremap = true, desc='clipboard / paste' })
+map("n", "<leader>P", "\"*P", { noremap = true, desc='clipboard / Paste' })
+map("n", "<leader>d", "\"*d", { noremap = true, desc='clipboard / delete' })
+map("v", "<leader>d", "\"*d", { noremap = true, desc='clipboard / delete' })
+map("n", "<leader>D", "\"*D", { noremap = true, desc='clipboard / delete' })
+
+-- buffers, files
 map("n", "<leader>fq", ":qa<cr>", { noremap = true, desc = "Quit All" })
 map("n", "<leader>fQ", ":qa<cr>", { noremap = true, desc = "Force Quit All" })
 map("n", "<leader>fe", ":q<cr>", { noremap = true, desc = "Quit" })
@@ -77,6 +88,7 @@ map("n", "<leader>bn", ":bn<cr>", { noremap = true, desc = "Buffer / Next" })
 map("n", "<leader>bp", ":bp<cr>", { noremap = true, desc = "Buffer / Previous" })
 map("n", "<leader>fs", ":w!<cr>", { noremap = true, desc = "File / Save" })
 map("n", "<leader>fn", ":enew<cr>", { noremap = true, desc = "File / New" })
+map("n", "<leader>fr", ":e!<cr>", { noremap = true, desc = "File / Refresh" })
 map("n", "<leader>fp", ":echo expand('%:h')<cr>", { noremap = true, desc = "File / Path" })
 map("n", "<leader>fc", ":e <cfile><cr>", { noremap = true, desc = "File / Create" })
 map("n", "<leader>fh", ":lua vim.notify(vim.fn.expand('%:p'), 'info', {title='Fullpath', timeout=1000})<cr>",

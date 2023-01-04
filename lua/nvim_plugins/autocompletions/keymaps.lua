@@ -57,7 +57,6 @@ M.lspsaga_keymaps = function()
         { noremap = true, silent = true, desc = "Peek Definition" })
 end
 
-
 M.nullls_keymaps = function()
     require("nvim_utils").keymap(
         "n",
@@ -69,7 +68,7 @@ M.nullls_keymaps = function()
     require("nvim_utils").keymap(
         "x",
         "<leader>lf",
-        "<esc><cmd>lua vim.lsp.buf.format {async = true }<cr>",
+        "<esc><cmd>lua vim.lsp.buf.range_formatting {async = true }<cr>",
         { noremap = true, silent = true, desc = "Range Format" }
     )
 end

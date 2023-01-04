@@ -22,10 +22,11 @@ M.configure = function()
         debug = false,
         sources = {
             diagnostics.flake8,
-            diagnostics.mypy,
+            -- diagnostics.mypy,
             formatting.black.with({
                 extra_args = { "-l", "79" }
             }),
+            formatting.stylua,
         },
     })
 

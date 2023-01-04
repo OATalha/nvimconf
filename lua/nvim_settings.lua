@@ -48,11 +48,11 @@ vim.o.incsearch = true
 -- wild menu settings
 vim.o.wildmenu = true
 vim.o.wildmode = 'full'
-vim.o.wildignore = '*.o,*.obj,*~'
+vim.o.wildignore = '*.o,*.obj,*~,*.pyc'
 
 -- encoding
 vim.o.fileencoding = 'utf-8'
 
 -- register
-vim.o.clipboard = "unnamedplus,unnamed"
 vim.o.fixeol = true
+

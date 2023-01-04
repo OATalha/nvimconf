@@ -1,3 +1,5 @@
+local map = require("nvim_utils").keymap
+
 M = {}
 
 M.install = function(use)
@@ -10,7 +12,10 @@ M.configure = function()
     if not status then
         return
     end
-    maximize.setup()
+    maximize.setup {
+        default_keymaps = false
+    }
+    map("n", "<Leader>wz", "<CMD>lua require('maximize').toggle()<CR>", {noremap = true, desc="Window / Maximize"})
 end
 
 
