@@ -52,6 +52,7 @@ packer.startup(
         use "tpope/vim-repeat"
         use "tpope/vim-unimpaired"
         use "tpope/vim-fugitive"
+        use "christoomey/vim-tmux-navigator"
 
         utils.install_modules(modules, use)
 
