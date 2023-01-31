@@ -13,11 +13,11 @@ M.configure = function ()
         return
     end
 
-    lspsaga.init_lsp_saga {
-        code_action_icon = "",
-        code_action_lightbulb = {
-            virtual_text = false
-        }
+    lspsaga.setup {
+        -- code_action_icon = "",
+        -- code_action_lightbulb = {
+        --     virtual_text = false
+        -- }
     }
 
     require('nvim_plugins/autocompletions/keymaps').lspsaga_keymaps()
